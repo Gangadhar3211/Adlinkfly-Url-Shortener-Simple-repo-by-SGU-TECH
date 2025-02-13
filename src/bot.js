@@ -29,12 +29,12 @@ bot.onText(/\/start/, (msg) => {
     + 'To shorten a URL, just type or paste the URL directly in the chat, and the bot will provide you with the shortened URL.\n\n'
     + 'If you haven\'t set your Indishort API token yet, use the command:\n/setapi YOUR_Indishort_API_TOKEN\n\n'
     + 'How To Use Me 👇👇 \n\n'
-  + '✅1. Got To https://indishort.live & Complete Your Registration.\n\n'
-  + '✅2. Then Copy Your API Key from here https://indishort.live/member/tools/api Copy Your API Only. \n\n'
+  + '✅1. Got To https://nglinks.rf.gd & Complete Your Registration.\n\n'
+  + '✅2. Then Copy Your API Key from here https://nglinks.rf.gd/member/tools/api Copy Your API Only. \n\n'
   + '✅3. Then add your API using command /setapi \n\n' 
   + 'Example: /setapi c49399f821fc020161bc2a31475ec59f35ae5b4\n\n'
   + '⚠️ You must have to send link with https:// or http://\n\n'
-  + 'Made with ❤️ By: @jit362';
+  + 'Made with ❤️ By: @NGLinks';
   + '**Now, go ahead and try it out!**';
 
   bot.sendMessage(chatId, welcomeMessage);
@@ -45,7 +45,7 @@ bot.onText(/\/setapi (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const userToken = match[1].trim();
 
-  // Save the user's AdlinkFly API token to the database
+  // Save the user's NG Links API token to the database
   saveUserToken(chatId, userToken);
 
   const response = `Your Indishort API token set successfully. ✅️✅️ Your token is: ${userToken}`;
@@ -127,7 +127,7 @@ async function shortenUrl(chatId, url) {
   }
 
   try {
-    const apiUrl = `https://indishort.live/api?api=${adlinkflyToken}&url=${encodeURIComponent(url)}`;
+    const apiUrl = `https://nglinks.rf.gd/api?api=${nglinksToken}&url=${encodeURIComponent(url)}`;
     const response = await axios.get(apiUrl);
     return response.data.shortenedUrl;
   } catch (error) {
